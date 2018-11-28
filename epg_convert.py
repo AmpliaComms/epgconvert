@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """ Main program which takes GraceNote ON format files and converts them
     to TVAnywhere format for Zappware 4.0 as well as the format for Zappware 2.x
-       
 """
 from datetime import date, timedelta
 import os
@@ -38,7 +37,7 @@ if __name__ == "__main__":
                 BASEDIRECTORY =\
                     "C:/Users/Dada/Dropbox/DataToDecisions/MassyComms/Amplia/Gracenote/working"
     else:#Linux
-        BASEDIRECTORY = "/home/tdeane/TVAnywhere/working"
+        BASEDIRECTORY = "/home/zappware/TVAnywhere/working"
 
 #setup environment to go through files for catch up as well as going forward if not already in file.
     NUMBER_FORWARD_DAYS = 0

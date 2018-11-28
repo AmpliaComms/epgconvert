@@ -1,0 +1,5 @@
+CREATE DB GraceNotePrograms /home/zappware/TVAnywhere/working/graceNoteInputFiles/on_car_samp_tv_programs_v22_current.xml
+
+CREATE DB GraceNoteSchedules /home/zappware/TVAnywhere/working/graceNoteInputFiles/on_car_samp_tv_schedules_v22_current.xml
+
+exit

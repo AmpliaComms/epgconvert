@@ -43,5 +43,7 @@ OTHER LIBRARIES TO BE LOADED.
 	pip install xmltodict
 	pip install lxml
 	
+NOTE
+linux diving script files which would reside in the directory above the working directory have been placed in the scripts directory of this repository.
 
 
