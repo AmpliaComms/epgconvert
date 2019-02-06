@@ -680,6 +680,7 @@ def create_b_d_related(grace_note_dict):
         if isinstance(grace_note_dict['xml']['assets']['asset'], list):
             for element in grace_note_dict['xml']['assets']['asset']:
                 if element['@width'] == '1920' and element['@height'] == '1080'\
+                and element['@action'] == 'add'\
                 and (element['@tier'] != 'Season' or  element['@tier'] != 'Series'):
                     href = "urn:tva:metadata:cs:HowRelatedCS:2012:19.1"
                     b_d_related.append({
@@ -687,6 +688,7 @@ def create_b_d_related(grace_note_dict):
                         "BDMediaLocatorMediaUri" : element['URI']
                         })
                 if element['@width'] == '1138' and element['@height'] == '640'\
+                and element['@action'] == 'add'\
                 and (element['@tier'] != 'Season' or  element['@tier'] != 'Season'):
                     href = "urn:tva:metadata:cs:HowRelatedCS:2012:19.2"
                     b_d_related.append({
@@ -696,6 +698,7 @@ def create_b_d_related(grace_note_dict):
 
         else:
             if element['@width'] == '1920' and element['@height'] == '1080'\
+            and element['@action'] == 'add'\
             and (element['@tier'] != 'Season' or  element['@tier'] != 'Series'):
                 href = "urn:tva:metadata:cs:HowRelatedCS:2012:19.1"
                 b_d_related.append({
@@ -703,6 +706,7 @@ def create_b_d_related(grace_note_dict):
                     "BDMediaLocatorMediaUri" : element['URI']
                     })
             if element['@width'] == '1138' and element['@height'] == '640'\
+            and element['@action'] == 'add'\
             and (element['@tier'] != 'Season' or  element['@tier'] != 'Season'):
                 href = "urn:tva:metadata:cs:HowRelatedCS:2012:19.2"
                 b_d_related.append({
@@ -725,6 +729,7 @@ def create_b_d_related_series(grace_note_dict):
         if isinstance(grace_note_dict['xml']['assets']['asset'], list):
             for element in grace_note_dict['xml']['assets']['asset']:
                 if element['@width'] == '1920' and element['@height'] == '1080'\
+                and element['@action'] == 'add'\
                 and element['@tier'] == 'Series':
                     href = "urn:tva:metadata:cs:HowRelatedCS:2012:19.1"
                     b_d_related_group_series.append({
@@ -732,6 +737,7 @@ def create_b_d_related_series(grace_note_dict):
                         "BDMediaLocatorMediaUri" : element['URI']
                         })
                 if element['@width'] == '1138' and element['@height'] == '640'\
+                and element['@action'] == 'add'\
                 and element['@tier'] == 'Series':
                     href = "urn:tva:metadata:cs:HowRelatedCS:2012:19.2"
                     b_d_related_group_series.append({
@@ -741,6 +747,7 @@ def create_b_d_related_series(grace_note_dict):
 
         else:
             if element['@width'] == '1920' and element['@height'] == '1080'\
+            and element['@action'] == 'add'\
             and element['@tier'] == 'Series':
                 href = "urn:tva:metadata:cs:HowRelatedCS:2012:19.1"
                 b_d_related_group_series.append({
@@ -748,6 +755,7 @@ def create_b_d_related_series(grace_note_dict):
                     "BDMediaLocatorMediaUri" : element['URI']
                     })
             if element['@width'] == '1138' and element['@height'] == '640'\
+            and element['@action'] == 'add'\
             and element['@tier'] == 'Series':
                 href = "urn:tva:metadata:cs:HowRelatedCS:2012:19.2"
                 b_d_related_group_series.append({
@@ -770,6 +778,7 @@ def create_b_d_related_season(grace_note_dict):
         if isinstance(grace_note_dict['xml']['assets']['asset'], list):
             for element in grace_note_dict['xml']['assets']['asset']:
                 if element['@width'] == '1920' and element['@height'] == '1080'\
+                and element['@action'] == 'add'\
                 and element['@tier'] == 'Season':
                     href = "urn:tva:metadata:cs:HowRelatedCS:2012:19.1"
                     b_d_related_group_season.append({
@@ -777,6 +786,7 @@ def create_b_d_related_season(grace_note_dict):
                         "BDMediaLocatorMediaUri" : element['URI']
                         })
                 if element['@width'] == '1138' and element['@height'] == '640'\
+                and element['@action'] == 'add'\
                 and element['@tier'] == 'Season':
                     href = "urn:tva:metadata:cs:HowRelatedCS:2012:19.2"
                     b_d_related_group_season.append({
@@ -786,6 +796,7 @@ def create_b_d_related_season(grace_note_dict):
 
         else:
             if element['@width'] == '1920' and element['@height'] == '1080'\
+            and element['@action'] == 'add'\
             and element['@tier'] == 'Season':
                 href = "urn:tva:metadata:cs:HowRelatedCS:2012:19.1"
                 b_d_related_group_season.append({
@@ -793,6 +804,7 @@ def create_b_d_related_season(grace_note_dict):
                     "BDMediaLocatorMediaUri" : element['URI']
                     })
             if element['@width'] == '1138' and element['@height'] == '640'\
+            and element['@action'] == 'add'\
             and element['@tier'] == 'Season':
                 href = "urn:tva:metadata:cs:HowRelatedCS:2012:19.2"
                 b_d_related_group_season.append({
