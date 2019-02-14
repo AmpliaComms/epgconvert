@@ -36,6 +36,10 @@ if __name__ == "__main__":
             if os.getlogin() == 'Dada':#Desktop at home
                 BASEDIRECTORY =\
                     "C:/Users/Dada/Dropbox/DataToDecisions/MassyComms/Amplia/Gracenote/working"
+            else:
+                if os.getlogin() == 'AneishaC':#Aneisha Cyrus Laptop
+                    BASEDIRECTORY =\
+                        "C:/Users/aneishaC/Documents/Python Scripts/working"
     else:#Linux
         BASEDIRECTORY = "/home/zappware/TVAnywhere/working"
 
@@ -73,6 +77,16 @@ if __name__ == "__main__":
     except IOError:
         print(":I/O Error Genre Match file AmpliaChannels.csv - not found")
         raise
+        
+    try:
+        with open('config/languageTranslation.csv', mode='r', newline=None, encoding="utf-8") as infile:
+            reader = csv.reader(infile)
+            language_reference = {rows[0]:rows[1] for rows in reader}
+            infile.close()
+    except IOError:
+        print(":I/O Error Language Translation file languageTranslation.csv - not found")
+        raise
+
 #set reference day
     reference_day = date.today()
 #will need logic to select source file for day
@@ -112,7 +126,7 @@ if __name__ == "__main__":
     #start forming an array structure for the xml objects
                 ProgramInformationArray = []
     #Get service information info for that channel
-                service_info = get_service_info(channel_element, SourceFilename)
+                service_info = get_service_info(channel_element, SourceFilename, language_reference)
     #  we need to create the main static tables in the objectify object
                 main_tables = create_main_tables(root_of_objectivy_object, channel_element)
     # write the ServiceInformationTable (ZW4)
@@ -120,11 +134,13 @@ if __name__ == "__main__":
     #write the ChannelInformation (ZW2)
                 write_zw2_channel_info(root_zw2, service_info, amplia_channels)
     #set up file names for the output files.
-                filename_xml = 'zappware4Output/xml/' +channel_element +\
+                #filename_xml = 'zappware4Output/xml/' +channel_element +\
+                #    "_" + reference_day.strftime('%Y%m%d') +'.xml'
+                filename_xml = 'zappware4Output/xml/' +service_info["callSign"] +\
                     "_" + reference_day.strftime('%Y%m%d') +'.xml'
                 filename_zw2_xml = 'zappware2Output/xml/' + amplia_channels[service_info["serviceId"]] +\
                     "_" + reference_day.strftime('%Y%m%d') +'.xml'
-                filename_img = 'zappware4Output/images/' +channel_element +\
+                filename_img = 'zappware4Output/images/' +service_info["callSign"] +\
                     "_" + reference_day.strftime('%Y%m%d') +'.txt'
                 filename_zw2_img = 'zappware2Output/images/' + amplia_channels[service_info["serviceId"]] +\
                     "_" + reference_day.strftime('%Y%m%d') +'.txt'
@@ -143,7 +159,7 @@ if __name__ == "__main__":
                     handle_event(main_tables, event_data, program_ids_already_used,
                                  group_ids_already_used, GENREMATCH, root_zw2,
                                  service_info, graphics_assets, zw2_graphics_assets,
-                                 amplia_channels)
+                                 amplia_channels, language_reference)
                 #PLACE TO CALL FUNCTION TO WRITE FOR SINGLE EVENT
                 write_unique_sort_file(filename_img, graphics_assets, BASEDIRECTORY)
                 write_unique_sort_file(filename_zw2_img, zw2_graphics_assets, BASEDIRECTORY)

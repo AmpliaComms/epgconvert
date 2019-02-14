@@ -95,11 +95,10 @@ def get_zw2_programme_data(b_d_unique, service_info, event_data, grace_note_dict
     zw2_programme_data["callSign_amplia"] = amplia_channels[service_info["serviceId"]]
     zw2_programme_data["recordable"] = "y"
     zw2_programme_data["npvrenable"] = "y"
-    zw2_programme_data["id"] = b_d_unique['program_id']+'.'+\
-            event_data['gmt_date_time_start_zw2'][:-6] + '.' +service_info["serviceId"]
+    zw2_programme_data["id"] = b_d_unique['guid']
     zw2_programme_data["type"] = b_d_unique['BDKeyword']
     zw2_programme_data["programTitle"] = b_d_unique['BDTitle']
-    zw2_programme_data["language"] = b_d_unique['BDTitle_att_lang']
+    zw2_programme_data["language"] = b_d_unique['BDTitle_att_lang_zw25']
     try:
         zw2_programme_data["programSubTitle"] =\
             grace_note_dict['xml']['episodeInfo']['title']['#text']
@@ -111,7 +110,7 @@ def get_zw2_programme_data(b_d_unique, service_info, event_data, grace_note_dict
 #    b_d_synopsis = createbDSynopsis(grace_note_dict)
     try:
         zw2_programme_data["desc"] = b_d_synopsis[0]["b_d_synopsis"]
-        zw2_programme_data["descLanguage"] = b_d_synopsis[0]["b_d_synopsis_att_lang"]
+        zw2_programme_data["descLanguage"] = b_d_synopsis[0]["b_d_synopsis_att_lang_zw25"]
     except (UnboundLocalError, KeyError, IndexError, LookupError, NameError, ValueError):
         zw2_programme_data["desc"] = ''
         zw2_programme_data["descLanguage"] = ''
